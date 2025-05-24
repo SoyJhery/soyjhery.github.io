@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burbujitas</title>
+</head>
+<body>
+    <div class="message">Te Amo Mi Reina 💖</div>
+    <div class="message">ATT: Tu Rey</div>
+    <div class="hearts">💖</div>
+    <div class="flower">🌸</div>
+    <div id="bubbles-text"></div>
+    <script>
+        const messages = [
+    "Eres mi reina 👑",
+    "Gracias por existir en mi vida 🌹",
+    "Contigo todo es mejor ✨",
+    "Eres mi felicidad 😊",
+    "Siempre pienso en ti 💭",
+    "Tu sonrisa ilumina mi día 😍",
+    "Eres mi persona favorita 🥰",
+    "Quiero abrazarte siempre 🤗",
+    "Te extraño cada segundo ⏳",
+    "Mi corazón es tuyo ❤️",
+    "Juntos somos invencibles 💪",
+    "Me haces muy feliz 😘",
+    "Eres mi sueño hecho realidad 🌈",
+    "Siempre a tu lado, mi amor 💑",
+    "Te elijo hoy y siempre 💍",
+    "Tu amor es mi mayor tesoro 💎",
+    "Me encantas tal y como eres 😻",
+    "Gracias por tu amor infinito ♾️",
+    "Te pienso y sonrío sin querer 😊",
+    "Te amo muchísimo 💖",
+];
+
+function createTextElement() {
+    const textElement = document.createElement("div");
+    textElement.className = "text-bubble"
+    textElement.innerText = messages[Math.floor(Math.random() * messages.length)];
+
+    const left = Math.random() * 80 + 10;
+    const top = Math.random() * 80 + 10;
+
+    textElement.style.position = "absolute";
+    textElement.style.left = left + "vw";
+    textElement.style.top = top + "vh";
+
+    const container = document.getElementById("bubbles-text")
+    container.appendChild(textElement);
+
+    setTimeout (() => {
+        const rect = textElement.getBoundingClientRect ();
+
+        if (rect.right > window.innerWidth) {
+            const newLeft = window.innerWidth - rect.width - 10;
+            textElement.style.left = `${newLeft}px`;
+        }
+        if (rect.bottom > window.innerHeight) {
+            const newTop = window.innerHeight - rect.height - 10;
+            textElement.style.top = `${newTop}px`;
+        }
+        if (rect.left < 0) {
+            textElement.style.left = '10px';
+        }
+        if (rect.top < 0) {
+            textElement.style.top = '10px';
+        }
+    }, 10);
+
+    setTimeout(() => {
+        textElement.remove();
+    }, 3000);
+}
+
+setInterval(createTextElement, 500);
+document.addEventListener("DOMContentLoaded", () => {
+    const container = document.getElementById("bubbles-text");
+
+    randomizeDecorations();
+    setInterval(randomizeDecorations, 3000);
+
+    // Create initial text elements
+    for (let i = 0; i < 10; i++) {
+        createTextElement();
+    }
+});
+
+function randomizeDecorations() {
+    // Lista de decoraciones (puedes agregar más emojis aquí)
+    const decorations = [
+        { emoji: "💖", className: "hearts" },
+        { emoji: "💗", className: "hearts" },
+        { emoji: "💓", className: "hearts" },
+        { emoji: "💞", className: "hearts" },
+        { emoji: "💕", className: "hearts" },
+        { emoji: "🌸", className: "flower" },
+        { emoji: "🌺", className: "flower" },
+        { emoji: "🌸", className: "flower" },
+        { emoji: "🌺", className: "flower" },
+    ];
+
+    // Elimina decoraciones anteriores
+    document.querySelectorAll('.hearts, .flower').forEach(el => el.remove());
+
+    // Crea y posiciona cada decoración
+    decorations.forEach(decoration => {
+        const el = document.createElement('div');
+        el.className = decoration.className;
+        el.textContent = decoration.emoji;
+        el.style.position = 'absolute';
+        el.style.left = Math.random() * 90 + 'vw';
+        el.style.top = Math.random() * 80 + 'vh';
+        document.body.appendChild(el);
+    });
+}
+    // Posicionar corazones y flores en lugares aleatorios
+
+    </script>
+    <style>
+        body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: url('https://img.freepik.com/vector-gratis/tema-san-valentin-corazones-cielo-rosa_1308-38030.jpg?semt=ais_hybrid&w=740')no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.message {
+    background-color: aliceblue;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+    font-size: 20px;
+    color: #d63384;
+    font-weight: bold;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease;
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.message:hover {
+    transform: scale(1.1);
+}
+
+.hearts {
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    z-index: -2;
+    font-size: 50px;
+    color: #ff99b6;
+    animation: floatHearts 5s ease-in-out infinite;
+}
+
+@keyframes floatHearts {
+    0% {
+        transform: translateY(0) scale(1); opacity: 1;
+    }
+    50% {
+        transform: translateY(-150px) scale(0.5); opacity:0.5;
+    }
+    100% {
+        transform: translateY(0) scale(1); opacity: 1;
+    }
+}
+
+.hearts:nth-child(2) {
+    left: 25%;
+    animation-delay: 2s;
+}
+.hearts:nth-child(3) {
+    left: 40%;
+    animation-delay: 3s;
+}
+.hearts:nth-child(4) {
+    left: 60%;
+    animation-delay: 4s;
+}
+.hearts:nth-child(5) {
+    left: 80%;
+    animation-delay: 5s;
+}
+
+.text-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.charming-text {
+    position: absolute;
+    font-size: 18px;
+    font-family: cursive;
+    color: #d63384;
+    animation: fadeInText 6s ease-in-out infinite;
+    z-index: 1;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 80vw;
+    word-wrap: break-word;
+}
+
+.charming-text:nth-child(1) { top: 15%; left: 5%; text-align: left; animation-duration: 6s;}
+.charming-text:nth-child(2) { top: 25%; left: 5%; text-align: left; animation-duration: 7s;}
+.charming-text:nth-child(3) { top: 35%; left: 5%; text-align: left; animation-duration: 8s;}
+.charming-text:nth-child(4) { top: 15%; right: 5%; text-align: left; animation-duration: 6s;}
+.charming-text:nth-child(5) { top: 25%; right: 5%; text-align: left; animation-duration: 7s;}
+.charming-text:nth-child(6) { top: 35%; right: 5%; text-align: left; animation-duration: 8s;}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.flower {
+    position: absolute;
+    bottom: 10px;
+    animation: flowerAnimation 5s ease-in-out infinite;
+    font-size: 30px;
+}
+
+@keyframes flowerAnimation {
+    0% {
+        transform: translateY(0) scale(0);
+    }
+    50% {
+        transform: translateY(-50px) scale(1.2);
+    }
+    100% {
+        transform: translateY(0) scale(0);
+    }
+}
+
+.flower:nth-child(1) { left: 10%; animation-delay: 0s; }
+.flower:nth-child(2) { left: 30%; animation-delay: 1s; }
+.flower:nth-child(3) { left: 50%; animation-delay: 2s; }
+.flower:nth-child(4) { left: 70%; animation-delay: 3s; }
+.flower:nth-child(5) { left: 90%; animation-delay: 4s; }
+
+.bubbles {
+    position: absolute;
+    bottom: 10px;
+    font-size: 25px;
+    color: #d63384;
+    animation: bubbleAnimation 7s ease-in-out infinite;
+}
+@keyframes bubbleAnimation {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-100px) scale(0.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+#bubbles-text {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Para que no bloquee clics */
+    z-index: -1;
+}
+
+.text-bubble {
+    position: absolute;
+    font-size: 18px;
+    font-family: 'Arial', sans-serif;
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: #d63384;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: floatText 7s ease-in-out infinite;
+    background-color: aliceblue;
+    white-space: nowrap;
+}
+
+@keyframes floatText {
+    0% {
+        transform: translateY(0px) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-50px) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) scale(1);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .message {
+
+    }
+    .hearts {
+
+    }
+    .charming-text {
+
+    }
+    .flower {
+
+    }
+    .bubbles {
+
+    }
+}
+    </style>
+</body>
+</html>
