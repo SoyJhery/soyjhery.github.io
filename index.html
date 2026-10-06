@@ -506,6 +506,102 @@
       color: var(--accent-blue);
     }
 
+    /* Featured Project Spotlight */
+    .featured-project-card {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 36px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.08);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .featured-project-card:hover {
+      border-color: var(--accent-blue);
+      box-shadow: 0 12px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.15);
+    }
+
+    .badge-featured {
+      background: rgba(56, 189, 248, 0.2) !important;
+      color: #38bdf8 !important;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+
+    .featured-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .featured-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .project-icon-img {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .featured-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+      margin: 22px 0;
+      padding: 18px;
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      line-height: 1.45;
+    }
+
+    .feature-icon {
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .featured-footer {
+      border-top: 1px solid var(--border-color);
+      padding-top: 20px;
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .featured-action-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 0.88rem;
+    }
+
     /* Sub-demos card */
     .demos-box {
       background: linear-gradient(135deg, rgba(30, 41, 59, 0.4), rgba(15, 23, 42, 0.6));
@@ -653,6 +749,8 @@
           <span>SoyJhery</span>
         </a>
         <ul class="nav-links">
+          <li><a href="#biblia">Biblia RVR 1960</a></li>
+          <li><a href="./biblia/">Web App Online</a></li>
           <li><a href="#habilidades">Habilidades</a></li>
           <li><a href="#proyectos">Proyectos</a></li>
           <li><a href="#sobre-mi">Sobre Mí</a></li>
@@ -780,6 +878,79 @@
         <div class="section-tag">Portafolio</div>
         <h2 class="section-title">Proyectos Públicos & Demos</h2>
         <p class="section-subtitle">Muestra de utilidades de código abierto, integraciones y demostraciones interactivas.</p>
+      </div>
+
+      <!-- Proyecto Destacado Principal: Biblia RVR 1960 Desktop & Web -->
+      <div id="biblia" class="featured-project-card">
+        <div class="featured-content">
+          <div class="featured-header">
+            <div class="featured-badges">
+              <span class="project-badge badge-featured">★ Proyecto Destacado</span>
+              <span class="project-badge">Windows x64 (.exe)</span>
+              <span class="project-badge">Web App Online</span>
+              <span class="project-badge">v0.4.0</span>
+            </div>
+            <h3 class="featured-title">
+              <img src="./biblia-icon.png" alt="Biblia Icon" class="project-icon-img" />
+              <span>Biblia RVR 1960 — Suite de Estudio Bíblico Desktop & Web</span>
+            </h3>
+            <p class="project-desc">
+              Aplicación de estudio bíblico profesional, moderna y 100% offline-first. Desarrollada con Electron, React 18 y TypeScript. Incluye el texto canónico Reina-Valera 1960 integrado con concordancia Strong léxica en Hebreo y Griego, referencias cruzadas TSK exhaustivas, generador gráfico de versículos HD y modo de presentación para púlpito.
+            </p>
+          </div>
+
+          <div class="featured-features-grid">
+            <div class="feature-item">
+              <span class="feature-icon">🔍</span>
+              <div>
+                <strong>Concordancia Strong Léxica:</strong> 14,197 definiciones y análisis etimológico en Hebreo y Griego con búsqueda instantánea.
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🔗</span>
+              <div>
+                <strong>386,905 Referencias Cruzadas:</strong> Motor TSK (Treasury of Scripture Knowledge) bidireccional entre versículos.
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🎨</span>
+              <div>
+                <strong>Verse Card Studio HD:</strong> Diseña y exporta tarjetas de versículos para redes en alta resolución con múltiples estilos.
+              </div>
+            </div>
+            <div class="feature-item">
+              <span class="feature-icon">🎙️</span>
+              <div>
+                <strong>Modo Púlpito & Pantalla Completa:</strong> Lectura fluida y predicación optimizada para proyectores y lectura sin distracciones.
+              </div>
+            </div>
+          </div>
+
+          <div class="featured-footer">
+            <div class="project-tech">
+              <span class="pill">Electron</span>
+              <span class="pill">React 18</span>
+              <span class="pill">TypeScript</span>
+              <span class="pill">Tailwind CSS</span>
+              <span class="pill">SQLite</span>
+              <span class="pill">Vite</span>
+              <span class="pill">Offline-First</span>
+            </div>
+            <div class="featured-action-links">
+              <a href="https://github.com/SoyJhery/biblia-desktop/releases/tag/v0.4.0" target="_blank" rel="noopener noreferrer" class="btn-primary btn-sm">
+                <span>⬇️ Descargar Windows v0.4.0</span>
+              </a>
+              <a href="./biblia/" class="btn-secondary btn-sm" target="_blank" rel="noopener noreferrer">
+                <span>🌐 Probar Web App Online</span>
+                <span>↗</span>
+              </a>
+              <a href="https://github.com/SoyJhery/biblia-desktop" target="_blank" rel="noopener noreferrer" class="btn-card">
+                <span>GitHub</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="projects-grid">
